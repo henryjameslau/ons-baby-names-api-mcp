@@ -1,3 +1,5 @@
+from contextlib import asynccontextmanager
+
 from starlette.applications import Starlette
 from starlette.requests import Request
 from starlette.responses import JSONResponse
@@ -16,8 +18,19 @@ async def root(request: Request) -> JSONResponse:
 
 _mcp_app = mcp.streamable_http_app()
 
+
+@asynccontextmanager
+async def lifespan(app: Starlette):
+    # Forward lifespan to the MCP app so its session manager task group is initialised.
+    async with mcp.session_manager.run():
+        yield
+
+
 # Vercel's Python runtime expects an ASGI-compatible object named "app".
-app = Starlette(routes=[
-    Route("/", root),
-    Mount("/", app=_mcp_app),
-])
+app = Starlette(
+    lifespan=lifespan,
+    routes=[
+        Route("/", root),
+        Mount("/", app=_mcp_app),
+    ],
+)
