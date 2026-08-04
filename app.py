@@ -21,7 +21,7 @@ from typing import Literal, Optional
 import requests
 from mcp.server.fastmcp import FastMCP
 
-BASE_URL = os.environ.get("BABY_NAMES_BASE_URL", "https://baby-names-api.netlify.app")
+BASE_URL = os.environ.get("BABY_NAMES_BASE_URL", "https://ons-baby-names-api.netlify.app")
 
 mcp = FastMCP("baby-names", host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
 
