@@ -59,4 +59,4 @@ The server will start on `http://localhost:8000/mcp`.
 
 ## Data source
 
-Data is served from [baby-names-api.netlify.app](https://baby-names-api.netlify.app), generated from ONS birth registration statistics for England & Wales. Source code: [henryjameslau/baby-names-api](https://github.com/henryjameslau/baby-names-api).
+Data is served from [ons-baby-names-api.netlify.app](https://ons-baby-names-api.netlify.app/), generated from ONS birth registration statistics for England & Wales. Source code: [henryjameslau/baby-names-api](https://github.com/henryjameslau/baby-names-api).
